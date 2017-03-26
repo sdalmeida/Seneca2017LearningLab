@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "node_modules/.bin/eslint *.js",
     "jest": "node_modules/.bin/jest",
-    "test": "npm run -s lint"
+    "test": "npm run -s lint && npm run jest"
   },
   "repository": {
     "type": "git",
