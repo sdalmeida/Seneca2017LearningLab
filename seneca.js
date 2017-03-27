@@ -7,9 +7,17 @@
  */
 exports.isValidEmail = function (email) {
   let isValid = false;
-  const domain = email.split('@');
-  if (domain[1] === 'myseneca.ca') {
-    isValid = true;
+  if (typeof email !== 'string' || email === null) {
+    return isValid;
+  }
+  const domain = email.trim().split('@');
+  switch (domain[1]) {
+    case 'myseneca.ca':
+    case 'senecacollege.ca':
+    case 'senecac.on.ca':
+      isValid = true;
+      break;
+    default: isValid = false;
   }
   return isValid;
 };
@@ -19,5 +27,11 @@ exports.isValidEmail = function (email) {
  * this person. NOTE: the email doesn't need to be real/valid/active.
  */
 exports.formatSenecaEmail = function (name) {
-  return name.concat('@myseneca.ca');
+  let email = name;
+  if (typeof email === 'string' && email.split('@')[1] === undefined) {
+    email = email.trim().concat('@myseneca.ca');
+  } else {
+    email = null;
+  }
+  return email;
 };
