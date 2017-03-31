@@ -40,7 +40,9 @@ app.get('/format/:name', function (req, res) {
   });
 });
 
+// GET http://localhost:3000/healthcheck
 app.get('/healthcheck', function (req, res) {
+  // Return a JSON formatted response with the current uptime
   res.json({
     uptime: process.uptime()
   });
